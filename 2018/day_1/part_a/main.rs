@@ -15,21 +15,8 @@ fn main() {
         let line = line_result.unwrap();
         // Ignore empty lines
         if line.len() > 0 {
-            let mut chars = line.chars();
-            match chars.next().unwrap() {
-                '-' => {
-                    // Collect the rest of the characters into a string again
-                    let amount_str = chars.collect::<String>();
-                    let amount = amount_str.parse::<i32>().unwrap();
-                    total -= amount;
-                },
-                '+' => {
-                    let amount_str = chars.collect::<String>();
-                    let amount = amount_str.parse::<i32>().unwrap();
-                    total += amount;
-                },
-                _ => {}
-            }
+            let amount = line.parse::<i32>().unwrap();
+            total += amount;
         }
     }
     println!("Final sum: {:?}", total);
