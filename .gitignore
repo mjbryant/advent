@@ -1,3 +1,4 @@
 *.sw[op]
 tags
 main
+target
