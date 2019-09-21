@@ -1,9 +1,5 @@
-all: run
-
 run:
-	rustc -g main.rs
-	RUST_BACKTRACE=1 ./main
+	RUST_BACKTRACE=1 cargo run
 
 test:
-	rustc -g main.rs
-	RUST_BACKTRACE=1 ./main test.txt
+	RUST_BACKTRACE=1 cargo run test.txt
