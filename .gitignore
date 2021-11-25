@@ -4,3 +4,4 @@ main
 target
 *.dSYM
 .ruby-version
+*.py[co]
