@@ -3,3 +3,4 @@ tags
 main
 target
 *.dSYM
+.ruby-version
