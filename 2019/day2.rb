@@ -9,6 +9,23 @@ def part_a(filename)
 end
 
 def part_b(filename)
+  # What pair of inputs (replacement ints to positions 1 and 2) produce
+  # the output (opcodes[0], after computation) of 19690720, then return
+  # 100 * noun + verb. Both noun and verb are between 0 and 99
+  opcodes = File.open(filename).read.split(",").map(&:to_i)
+  (0..99).map do |noun|
+    (0..99).map do |verb|
+      candidate = opcodes.dup
+      candidate[1] = noun
+      candidate[2] = verb
+      new_opcodes = compute(candidate)
+      if new_opcodes[0] == 19690720
+        print_result(result: (100 * noun + verb), day: 2, part: "b")
+        return
+      end
+    end
+  end
+  raise StandardError.new("No noun/verb combination found")
 end
 
 def compute(opcodes)
