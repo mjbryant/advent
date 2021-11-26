@@ -57,4 +57,4 @@ end
 
 part_a("./data/day2.txt")
 part_b("./data/day2.txt")
-test
+# test
