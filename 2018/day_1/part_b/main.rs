@@ -27,7 +27,7 @@ fn main() {
     for number in endless_numbers {
         total += number;
         if seen.contains(&total) {
-            println!("First repeated total is {:?}", total);
+            println!("2018.1.b: {:?}", total);
             return
         }
         seen.insert(total);

@@ -19,5 +19,5 @@ fn main() {
             total += amount;
         }
     }
-    println!("Final sum: {:?}", total);
+    println!("2018.1.a: {:?}", total);
 }

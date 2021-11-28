@@ -14,7 +14,7 @@ end
 
 def print_result(result:, day:, part:)
   validate(day: day, part: part)
-  puts "#{day}.#{part}: #{result}"
+  puts "2019.#{day}.#{part}: #{result}"
 end
 
 private def validate(day:, part:)
