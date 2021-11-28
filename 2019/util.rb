@@ -4,6 +4,14 @@ def assert_equal(a, b)
   end
 end
 
+def assert(x)
+  assert_equal(x, true)
+end
+
+def refute(x)
+  assert_equal(x, false)
+end
+
 def print_result(result:, day:, part:)
   validate(day: day, part: part)
   puts "#{day}.#{part}: #{result}"
