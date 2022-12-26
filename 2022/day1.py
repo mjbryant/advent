@@ -1,4 +1,4 @@
-with open('input1.txt') as f:
+with open('data/input1.txt') as f:
   chunks = [x.split('\n') for x in f.read().split('\n\n')]
 
 empty = chunks[-1].pop()
