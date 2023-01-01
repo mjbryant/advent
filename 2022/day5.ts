@@ -1,5 +1,3 @@
-import { chunk } from "https://deno.land/std@0.121.0/collections/chunk.ts";
-
 // Given the starting state, perform the moves. Crates
 // are moved one at a time. At the end, read off the top
 // crates for each stack.
