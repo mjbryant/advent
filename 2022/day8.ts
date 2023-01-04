@@ -87,7 +87,6 @@ const calculateScore1 = (input: string): number => {
 const computeViewingDistance = (x: number, y: number, grid: number[][]): number => {
   // This is kind of ignoring the edge trees. None of these will be the answer anyways.
   // Look left
-  let viewingDistance = 1;
   const myHeight = grid[y][x];
   let visibleLeft = 0;
   for (let i = x - 1; i >= 0; i--) {

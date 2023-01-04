@@ -66,7 +66,7 @@ const calculateScore2 = (input: string): number => {
   return score;
 }
 
-// console.log(`Test score is: ${calculateScore1(testData)}`); prints 15
+console.log(`Test score is: ${calculateScore1(testData)}`);
 console.log(`Part 1: ${calculateScore1(games)}`);
-// console.log(`Test part 2 score is: ${calculateScore2(testData)}`);
+console.log(`Test part 2 score is: ${calculateScore2(testData)}`);
 console.log(`Part 2: ${calculateScore2(games)}`);
