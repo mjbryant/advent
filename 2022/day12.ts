@@ -19,16 +19,16 @@ type Node = {
   x: number;
   y: number;
   neighbors: string[]; // list of accessible neighbors
-}
+};
 
 type Graph = {
-  nodes: {[key: string]: Node};
+  nodes: { [key: string]: Node };
   start: string;
   end: string;
 };
 
 const parseInput = (input: string): Graph => {
-  const graph: Graph = {nodes: {}, start: "", end: ""};
+  const graph: Graph = { nodes: {}, start: "", end: "" };
   const lines: string[] = input.split("\n");
   let start = "";
   let end = "";
@@ -36,10 +36,10 @@ const parseInput = (input: string): Graph => {
     const values = lines[y].split("");
     for (let x = 0; x < values.length; x++) {
       let value: number = values[x].charCodeAt(0) - 97;
-      if (values[x] === 'S') {
+      if (values[x] === "S") {
         start = `${x},${y}`;
         value = -1;
-      } else if (values[x] === 'E') {
+      } else if (values[x] === "E") {
         end = `${x},${y}`;
         value = 26;
       }
@@ -49,7 +49,7 @@ const parseInput = (input: string): Graph => {
         value,
         x,
         y,
-      }
+      };
       graph.nodes[node.id] = node;
     }
   }
@@ -70,34 +70,34 @@ const parseInput = (input: string): Graph => {
     });
   }
   return graph;
-}
+};
 
-const printPath = (previous: {[key: string]: string}, end: string, start: string): void => {
-  // Only works for the test input
-  const map = [
-    ['.', '.', '.', '.', '.', '.', '.', '.'],
-    ['.', '.', '.', '.', '.', '.', '.', '.'],
-    ['.', '.', '.', '.', '.', '.', '.', '.'],
-    ['.', '.', '.', '.', '.', '.', '.', '.'],
-    ['.', '.', '.', '.', '.', '.', '.', '.'],
-  ]
-  let current = end;
-  while (current !== start) {
-    const [xString, yString] = current.split(',');
-    const x = parseInt(xString);
-    const y = parseInt(yString);
-    map[y][x] = 'o';
-    console.log(current);
-    for (const row of map) {
-      console.log(row.join(''));
-    }
-    current = previous[current];
-  }
-}
+// const printPath = (previous: {[key: string]: string}, end: string, start: string): void => {
+//   // Only works for the test input
+//   const map = [
+//     ['.', '.', '.', '.', '.', '.', '.', '.'],
+//     ['.', '.', '.', '.', '.', '.', '.', '.'],
+//     ['.', '.', '.', '.', '.', '.', '.', '.'],
+//     ['.', '.', '.', '.', '.', '.', '.', '.'],
+//     ['.', '.', '.', '.', '.', '.', '.', '.'],
+//   ]
+//   let current = end;
+//   while (current !== start) {
+//     const [xString, yString] = current.split(',');
+//     const x = parseInt(xString);
+//     const y = parseInt(yString);
+//     map[y][x] = 'o';
+//     console.log(current);
+//     for (const row of map) {
+//       console.log(row.join(''));
+//     }
+//     current = previous[current];
+//   }
+// }
 
 const findShortestPath = (graph: Graph, start: string): number => {
-  const distances: {[key: string]: number} = {};
-  const previous: {[key: string]: string} = {};
+  const distances: { [key: string]: number } = {};
+  const previous: { [key: string]: string } = {};
   const queue = new Set<string>();
 
   for (const node of Object.values(graph.nodes)) {
@@ -114,7 +114,7 @@ const findShortestPath = (graph: Graph, start: string): number => {
     let candidate = "INVALID";
     let distance: number;
     for (const [_, node] of queue.entries()) {
-      distance = distances[node] ;
+      distance = distances[node];
       if (distance <= minDistance) {
         minDistance = distance;
         candidate = node;
@@ -132,7 +132,6 @@ const findShortestPath = (graph: Graph, start: string): number => {
         previous[neighbor] = candidate;
       }
     }
-
   }
 
   // At this point we have distances populated with the shortest distances
@@ -140,13 +139,13 @@ const findShortestPath = (graph: Graph, start: string): number => {
   // node in the shortest path.
   // printPath(previous, graph.end, graph.start);
   return distances[graph.end];
-}
+};
 
 const calculateScore1 = (input: string): number => {
   const graph = parseInput(input);
   const shortestPathLength = findShortestPath(graph, graph.start);
   return shortestPathLength;
-}
+};
 
 const calculateScore2 = (input: string): number => {
   // Find the best 'a' in the whole graph. This is going to be hella slow, but that's fine.
@@ -165,7 +164,7 @@ const calculateScore2 = (input: string): number => {
     }
   });
   return minDistance;
-}
+};
 
 console.log(`Test score is: ${calculateScore1(testData)}`);
 console.log(`Part 1: ${calculateScore1(data)}`);
