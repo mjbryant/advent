@@ -5,3 +5,4 @@ target
 *.dSYM
 .ruby-version
 *.py[co]
+.vscode
